@@ -45,7 +45,7 @@ An example of `cleanup-workspaces.json` config:
   "^/var/media/usbstick/",
   "assignment.*?/workspace.code-workspace$",
   "/my_wonderful_mess$",
-  "secret"
+  "secret_masterpiece"
 ]
 ```
 
@@ -54,7 +54,7 @@ To prevent:
   * deleting workspace storage data for any project located on a `usbstick` removable USB drive;
   * deleting data for a workspace project containing “assignment” in its path;
   * deleting data for a folder named “my_wonderful_mess”;
-  * deleting anything containing “secret” in its path.
+  * deleting anything containing “secret_masterpiece” in its path.
 
 This file must me placed into each `User` folder where you want it to be applied, e.g.:
 
