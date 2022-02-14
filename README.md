@@ -10,7 +10,7 @@ $vscodedata/user-data/User/workspaceStorage
 
 For some bizarre reason, Code doesn’t employ any mechanism to clean up this storage, even though most of workspace data stored in there might refer to stuff that is long gone. With time this storage would inevitably grow and become filled with lots of junk.
 
-Ideally, Code should provide some kind of graphical interface in form of a spreadsheet that would allow careful inspection and manual removal of unneeded workspace storage. For now, this little command line Node.js utility will clean up your Visual Studio Code workspace storage by removing workspace entries that no longer exist on your system.
+Ideally, Code should provide some kind of graphical interface in form of a spreadsheet that would allow careful inspection and manual removal of unneeded workspace storage. For now, this little command-line Node.js utility will clean up your Visual Studio Code workspace storage by removing workspace entries that no longer exist on your system.
 
 The program can run in batch or interactive mode (requiring confirmation for each entry marked for deletion). it is also possible to set up a list of exceptions separately for each data folder to whitelist certain entries and prevent their deletion. On top of this, there’s ability to clean up multiple workspace storages in one go, e.g. in case of multiple Code installations.
 
@@ -24,7 +24,7 @@ Cleanup a single workspace storage (by default interactive mode is assumed):
 node cleanup-workspaces.js $HOME/Applications/code-portable-data
 ```
 
-Cleanup one workspace storage in batch mode (without prompt for changes) and another in interactive mode (with prompts to confirm deletion):
+Cleanup one workspace storage in batch mode (quiet mode) and another in interactive mode (with prompts to confirm deletion):
 
 ```console
 node cleanup-workspaces.js -b $HOME/Applications/code-portable-data -i $HOME/Applications/code-insiders-portable-data
@@ -51,7 +51,7 @@ An example of `cleanup-workspaces.json` config:
 
 To prevent:
 
-  * deleting workspace storage data for any project located on a `usbstick` removable USB stick;
+  * deleting workspace storage data for any project located on a `usbstick` removable USB drive;
   * deleting data for a workspace project containing “assignment” in its path;
   * deleting data for a folder named “my_wonderful_mess”;
   * deleting anything containing “secret” in its path.
