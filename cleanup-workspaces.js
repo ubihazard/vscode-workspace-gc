@@ -44,7 +44,7 @@ function isDirectory (path) {
 
 function removeWorkspace (storagePath, wspacePath) {
   trace (wspacePath);
-  const opts = {cwd: storagePath, stdio: [0, 1, 2], shell: true};
+  const opts = {cwd: fsPath.resolve ('.'), shell: true};
   if (process.platform == "win32") {
     shell.spawnSync ("rmdir", ["/s", "/q", wspacePath], opts);
   } else {
@@ -121,16 +121,16 @@ https://buymeacoff.ee/ubihazard`);
   //
   // If workspace target path matches any prefix it is guaranteed
   // to not be removed, - even if its target no longer exists. */
-  const configPath = slashes ("/cleanup-workspaces.cfg");
+  const configPath = slashes ("/cleanup-workspaces.json");
   const exceptions = (() => {
-    if (!fs.existsSync (`.${configPath}`)) return [];
+    if (!fs.existsSync (`..${configPath}`)) return [];
     try {
-      const arr = JSON.parse (fs.readFileSync (`.${configPath}`));
+      const arr = JSON.parse (fs.readFileSync (`..${configPath}`));
       /* Make regular expressions */
       arr.forEach ((xcept, idx) => {
         arr[idx] = new RegExp (xcept.toLocaleLowerCase());
       });
-      return json;
+      return arr;
     } catch (err) {
       return undefined;
     }
@@ -191,7 +191,7 @@ https://buymeacoff.ee/ubihazard`);
             console.log (`Removing: ${wspace}`);
             removeWorkspace (storagePath, wspacePath);
           } else {
-            console.log (`Skippiing: ${wspace}`);
+            console.log (`Skipping: ${wspace}`);
           }
         }
       }
