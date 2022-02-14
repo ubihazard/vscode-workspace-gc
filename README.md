@@ -1,6 +1,6 @@
 # Visual Studio Code workspace garbage collector
 
-Every time you create a workspace or simply open a folder, [Visual Studio Code](https://code.visualstudio.com) creates a workspace storage item associated with it for the purpose of keeping some workspace-specific settings and data. (In Code a folder is really treated like a temporary workspace.) This folder can be found at:
+Every time you create a workspace or simply open a folder, [Visual Studio Code](https://code.visualstudio.com) creates a workspace storage item associated with it for the purpose of keeping some workspace-specific settings and data. (In Code a folder is really treated like a temporary workspace.) Workspace storage can be found at:
 
 ```console
 $vscodedata/user-data/User/workspaceStorage
