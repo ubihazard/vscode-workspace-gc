@@ -121,11 +121,11 @@ https://buymeacoff.ee/ubihazard`);
   //
   // If workspace target path matches any prefix it is guaranteed
   // to not be removed, - even if its target no longer exists. */
-  const configPath = slashes ("/cleanup-workspaces.json");
+  const configPath = slashes ("../cleanup-workspaces.json");
   const exceptions = (() => {
-    if (!fs.existsSync (`..${configPath}`)) return [];
+    if (!fs.existsSync (configPath)) return [];
     try {
-      const arr = JSON.parse (fs.readFileSync (`..${configPath}`));
+      const arr = JSON.parse (fs.readFileSync (configPath));
       /* Make regular expressions */
       arr.forEach ((xcept, idx) => {
         arr[idx] = new RegExp (xcept.toLocaleLowerCase());
@@ -137,7 +137,7 @@ https://buymeacoff.ee/ubihazard`);
   })();
 
   if (exceptions === undefined) {
-    console.error (`Invalid workspace cleanup config: ${storagePath}${configPath}`);
+    console.error (`Invalid workspace cleanup config: ${storagePath}/${configPath}`);
     return;
   }
 
